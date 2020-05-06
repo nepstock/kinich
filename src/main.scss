@@ -1,0 +1,25 @@
+body {
+  font-family: 'Spartan', sans-serif;
+  text-align: center;
+  color: #2c3e50;
+  background: #f1f2f5;
+}
+
+.btn-sm {
+  padding: .5rem .75rem;
+  font-size: .775rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+ 
+/** CAROUSEL COMPONENT **/
+.carousel-caption {
+  bottom: 35%;
+  h1 {
+    font-weight: 600;
+  }
+  p{
+    font-weight: 600;
+  }
+}
