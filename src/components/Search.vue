@@ -21,7 +21,7 @@
       <b-form-input type="search" placeholder="Buscar imágenes"></b-form-input>
 
       <b-input-group-append>
-        <b-button variant="danger"
+        <b-button size="sm" variant="danger"
           >Buscar <i class="fas fa-search ml-2"></i
         ></b-button>
       </b-input-group-append>
@@ -33,7 +33,7 @@
   width: 100%;
   position: absolute;
   top: 60px;
-  z-index: 999;
+  z-index: 2;
 }
 
 .form-control:focus,

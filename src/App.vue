@@ -1,20 +1,28 @@
 <template>
   <div id="app">
-    <NavBar />
-    <router-view></router-view>
+    <b-overlay :show="showOverlay" opacity="0.65">
+      <NavBar @logoutSuccess="logout" />
+      <router-view></router-view>
+    </b-overlay> 
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import NavBar from "@/components/NavBar.vue";
-import HelloWorld from "@/components/HelloWorld.vue";
 
 @Component({
   components: {
-    HelloWorld,
     NavBar
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  showOverlay = false;
+  logout(value: boolean) {
+    this.showOverlay = true;
+    setTimeout(() => {
+      this.showOverlay = false;
+    }, 2000)
+  }
+}
 </script>
