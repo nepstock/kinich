@@ -36,8 +36,22 @@
             <template v-slot:button-content>
               <i class="fas fa-user mr-2"></i> Iván Correa
             </template>
+            <b-dropdown-item size="sm">
+              <router-link to="/">
+                <small class="text-body"
+                  ><i class="fas fa-home mr-2 text-muted"></i>Ir al inicio</small
+                >
+              </router-link>
+            </b-dropdown-item>
+            <b-dropdown-item size="sm">
+              <router-link to="/dashboard">
+                <small class="text-body"
+                  ><i class="fas fa-image mr-2 text-muted"></i>Subir imágenes</small
+                >
+              </router-link>
+            </b-dropdown-item>
             <b-dropdown-item @click="isLogout" size="sm">
-              <small><i class="fas fa-power-off mr-2"></i>Cerrar sesión</small>
+              <small><i class="fas fa-power-off mr-2 text-muted"></i>Cerrar sesión</small>
             </b-dropdown-item>
           </b-dropdown>
         </b-nav-form>
@@ -78,6 +92,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import FormSignIn from "@/components/FormSignIn.vue";
 import FormSignUp from "@/components/FormSignUp.vue";
+import router from "@/router/index";
 
 @Component({
   components: {
@@ -97,11 +112,13 @@ export default class NavBar extends Vue {
     this.isLogin = true;
     this.showSignIn = false;
     this.popToast("info", "b-toaster-bottom-right");
+    router.push({ name: "Dashboard" });
   }
 
   isLogout() {
     this.isLogin = false;
     this.$emit("logoutSuccess", true);
+    router.push({ name: "Home" });
   }
 
   popToast(variant: string, toaster: string) {
