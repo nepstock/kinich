@@ -1,5 +1,5 @@
 <template>
-  <div class="search px-3 px-md-5">
+  <div class="search px-3 px-md-5" :class="spacingBar ? 'active' : ''">
     <b-input-group>
       <b-input-group-prepend>
         <b-dropdown size="sm" :text="textDropdown" variant="info">
@@ -36,6 +36,10 @@
   z-index: 2;
 }
 
+.search.active {
+  top: 30px;
+}
+
 .form-control:focus,
 .form-control:active {
   outline: none;
@@ -67,6 +71,10 @@ import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class Search extends Vue {
   textDropdown = "Todas las imágenes";
+
+  get spacingBar() {
+    return this.$route.path !== "/" ? true : false;
+  }
 
   clickOption(value: string) {
     this.textDropdown = value;

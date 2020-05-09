@@ -4,8 +4,7 @@
       class="navbar-custom bg-transparent'"
       :type="typeNavbar ? 'light' : 'dark'"
     >
-      <b-navbar-brand href="#">NepeStock</b-navbar-brand>
-
+      <b-navbar-brand to="/">NepeStock</b-navbar-brand>
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
           <div v-if="!isLogin">
@@ -39,24 +38,30 @@
             <b-dropdown-item size="sm">
               <router-link to="/">
                 <small class="text-body"
-                  ><i class="fas fa-home mr-2 text-muted"></i>Ir al inicio</small
+                  ><i class="fas fa-home mr-2 text-muted"></i>Ir al
+                  inicio</small
                 >
               </router-link>
             </b-dropdown-item>
             <b-dropdown-item size="sm">
-              <router-link to="/dashboard">
+              <router-link to="/images">
                 <small class="text-body"
-                  ><i class="fas fa-image mr-2 text-muted"></i>Subir imágenes</small
+                  ><i class="fas fa-image mr-2 text-muted"></i>Subir
+                  imágenes</small
                 >
               </router-link>
             </b-dropdown-item>
             <b-dropdown-item @click="isLogout" size="sm">
-              <small><i class="fas fa-power-off mr-2 text-muted"></i>Cerrar sesión</small>
+              <small
+                ><i class="fas fa-power-off mr-2 text-muted"></i>Cerrar
+                sesión</small
+              >
             </b-dropdown-item>
           </b-dropdown>
         </b-nav-form>
       </b-navbar-nav>
     </b-navbar>
+    <NavRoutes />
 
     <b-modal
       id="login"
@@ -92,12 +97,14 @@
 import { Component, Vue } from "vue-property-decorator";
 import FormSignIn from "@/components/FormSignIn.vue";
 import FormSignUp from "@/components/FormSignUp.vue";
+import NavRoutes from "@/components/NavRoutes.vue";
 import router from "@/router/index";
 
 @Component({
   components: {
     FormSignIn,
-    FormSignUp
+    FormSignUp,
+    NavRoutes
   }
 })
 export default class NavBar extends Vue {
@@ -112,13 +119,15 @@ export default class NavBar extends Vue {
     this.isLogin = true;
     this.showSignIn = false;
     this.popToast("info", "b-toaster-bottom-right");
-    router.push({ name: "Dashboard" });
+    router.push({ name: "Images" });
   }
 
   isLogout() {
     this.isLogin = false;
     this.$emit("logoutSuccess", true);
-    router.push({ name: "Home" });
+    setTimeout(() => {
+      router.push({ name: "Home" });
+    }, 1500);
   }
 
   popToast(variant: string, toaster: string) {

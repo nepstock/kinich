@@ -1,7 +1,10 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "@/views/Home.vue";
-import Dashboard from "@/views/Dashboard.vue";
+import Images from "@/views/Images.vue";
+import ImagesList from "@/views/ImagesList.vue";
+import ImagesSearch from "@/views/ImagesSearch.vue";
+import MyAccount from "@/views/MyAccount.vue";
 
 Vue.use(VueRouter);
 
@@ -12,9 +15,24 @@ const routes: Array<RouteConfig> = [
     component: Home
   },
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: Dashboard
+    path: "/images",
+    name: "Images",
+    component: Images
+  },
+  {
+    path: "/images-list",
+    name: "ImagesList",
+    component: ImagesList
+  },
+  {
+    path: "/images-search",
+    name: "ImagesSearch",
+    component: ImagesSearch
+  },
+  {
+    path: "/my-account",
+    name: "MyAccount",
+    component: MyAccount
   }
 ];
 

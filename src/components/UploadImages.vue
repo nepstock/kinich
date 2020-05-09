@@ -8,9 +8,14 @@
       @vdropzone-success="testFile"
     >
       <div class="dropzone-custom-content">
-        <h3 class="dropzone-custom-title">Drag and drop to upload content!</h3>
-        <div class="subtitle">
-          ...or click to select a file from your computer
+        <div class="dropzone-custom-title font-weight-bolder ">
+          <h1 class="h3">
+            <i class="fas fa-cloud-upload-alt fa-3x text-muted"></i>
+          </h1>
+          Arrastra tus imágenes aquí para cargarlas
+        </div>
+        <div class="subtitle font-weight-bolder ">
+          ...o da clic y selecciona el archivo desde tu computadora
         </div>
       </div>
     </vue2Dropzone>
@@ -51,3 +56,10 @@ export default class UploadImages extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.vue-dropzone {
+  border: 3px dashed #e5e5e5;
+  font-family: "Spartan", sans-serif;
+}
+</style>
