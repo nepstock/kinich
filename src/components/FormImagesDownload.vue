@@ -11,7 +11,7 @@
             <p class="small mb-0">
               <span class="fa" :class="option.icon"></span>
               <span class="font-weight-bolder ml-1">{{ option.label }}</span>
-              <small class="text-body">{{ option.property }}</small>
+              <small class="text-body ml-2">{{ option.property }}</small>
               <br />
               <small class="text-primary">{{ option.size }}</small>
             </p>
