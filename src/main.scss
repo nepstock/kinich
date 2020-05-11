@@ -101,3 +101,18 @@ label {
   vertical-align: middle;
   display: inline-block;
 }
+
+.vs__dropdown-option--highlight {
+  background: #5897fb;
+  color: #fff!important;
+  p {
+    small {
+      color: #ffffff!important;
+    }
+  }
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+  top: .05rem;
+}

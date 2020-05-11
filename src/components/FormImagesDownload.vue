@@ -3,55 +3,50 @@
     <h1 class="h5 font-weight-bolder mb-4">
       {{ form.name === "" ? "Agrega un título" : form.name }}
     </h1>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group
-        id="input-group-2"
-        label="Título de tu imagen:"
-        label-for="input-2"
-      >
-        <b-form-input
-          id="input-2"
-          v-model="form.name"
-          placeholder="Ingresa el nuevo nombre para tu imagen"
-          size="sm"
-        ></b-form-input>
+    <b-form @submit="onSubmit">
+      <b-form-group>
+        <label>Seleciona el tamaño de la imagen</label>
+        <v-select v-model="form.selected" :options="options" :reduce="item => item.label">
+          <template slot="option" slot-scope="option">
+            <p class="small mb-0">
+              <span class="fa" :class="option.icon"></span>
+              <span class="font-weight-bolder ml-1">{{ option.label }}</span>
+              <small class="text-body">{{ option.property }}</small>
+              <br />
+              <small class="text-primary">{{ option.size }}</small>
+            </p>
+          </template>
+        </v-select>
+      </b-form-group>
+      <hr />
+      <b-form-group>
+        <b-form-checkbox
+          class="d-flex align-items-center"
+          id="checkbox-1"
+          v-model="form.licence"
+          name="checkbox-1"
+          value="accepted"
+          unchecked-value="not_accepted"
+        >
+          Actualizar a licencia mejorada <b-badge variant="warning">PRO $99USD</b-badge>
+        </b-form-checkbox>
       </b-form-group>
 
-      <b-form-group
-        id="textarea"
-        label="Descripción de tu imagen:"
-        label-for="textarea "
-      >
-        <b-form-textarea
-          id="textarea"
-          v-model="form.description"
-          placeholder="Ingresa alguna descripción..."
-          rows="3"
-          max-rows="6"
-          size="sm"
-        ></b-form-textarea>
+      <b-form-group>
+        <ul class="small">
+          <li>Publicidad al aire libre o impresa con circulación o audiencia superior a 500,000</li>
+          <li>Uso en mercancía, ropa y obras de arte</li>
+          <li>Uso en plantillas de diseño web o impreso</li>
+        </ul>
       </b-form-group>
 
-      <b-form-group label="Tags para tu imagen:" label-for="tags-pills">
-        <b-form-tags
-          input-id="tags-pills"
-          v-model="form.tags"
-          tag-variant="primary"
-          add-button-text="Agregar"
-          add-button-variant="outline-primary"
-          tag-pills
-          size="sm"
-          separator=" "
-          placeholder="Ingresa tus tags aquí"
-          class="mb-2"
-        ></b-form-tags>
-      </b-form-group>
+
 
       <b-row class="justify-content-end text-right mt-4">
         <b-col>
           <b-button type="submit" variant="danger" size="sm"
-            >Descargar <i class="fas fa-arrow-down ml-2"></i></b-button
-          >
+            >Descargar <i class="fas fa-arrow-down ml-2"></i
+          ></b-button>
         </b-col>
       </b-row>
     </b-form>
@@ -63,17 +58,36 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class FormImagesDownload extends Vue {
+  options = [
+    {
+      label: "Pequeño",
+      icon: "fa-image",
+      size: "500 x 324 píxeles",
+      property: "4.2cm x 2.8cm · 300 DPI · JPEG"
+    },
+    {
+      label: "Mediano",
+      icon: "fa-image",
+      size: "1000 x 667 píxeles",
+      property: "8.5cm x 5.6cm · 300 DPI · JPEG"
+    },
+    {
+      label: "Grande",
+      icon: "fa-image",
+      size: "4096 x 2731 píxeles",
+      property: "34.7cm x 23.1cm · 300 DPI · JPEG"
+    }
+  ];
+
   form = {
     id: 0,
-    name: "",
-    description: "",
-    tags: []
+    selected: "Pequeño",
+    licence: "not_accepted"
   };
-  show = true;
   onSubmit(evt: Event) {
     evt.preventDefault();
     // alert(JSON.stringify(this.form));
-    this.$emit('download', this.form)
+    this.$emit("download", this.form);
   }
 
   created() {
@@ -81,3 +95,10 @@ export default class FormImagesDownload extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.vs__dropdown-option--highlight {
+  background: #000000 !important;
+  color: #fff;
+}
+</style>

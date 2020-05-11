@@ -7,7 +7,7 @@
             <b-alert show variant="warning">
               <small>
                 <span class="font-weight-bolder">Recuerda:</span>
-                cada vez que subas una imagen deberes editarla para agregar su
+                cada vez que subas una imagen deberás editarla para agregar su
                 <span class="font-weight-bolder">nombre</span>, 
                 <span class="font-weight-bolder">descripción</span> y 
                 <span class="font-weight-bolder">tags</span>,<br /> para que pueda aparecer en la
