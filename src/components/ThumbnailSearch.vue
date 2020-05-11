@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import router from "@/router/index";
 
 @Component
 export default class ThumbnailSearch extends Vue {
@@ -24,7 +25,7 @@ export default class ThumbnailSearch extends Vue {
   showOverlay = true;
 
   clickedImg(item: any) {
-    alert('your clicked image ' + item.id)
+    router.push({ name: "ImagesDownload", params: { id: item.id} });
   }
 
   created() {

@@ -1,6 +1,6 @@
 <template>
   <div class="bg-light">
-    <section class="vertical-h80">
+    <section class="vertical-h80 pb-5">
       <b-container>
         <b-row>
           <b-col>
@@ -10,6 +10,19 @@
         <b-row class="thumbnail-search">
           <b-col>
             <ThumbnailSearch :arrImg="arrImages" />
+          </b-col>
+        </b-row>
+        <b-row class="justify-content-end">
+          <b-col sm="4">
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="100"
+              :per-page="1"
+              align="fill"
+              size="sm"
+              first-number
+              last-number
+            ></b-pagination>
           </b-col>
         </b-row>
       </b-container>
@@ -29,6 +42,8 @@ import ThumbnailSearch from "@/components/ThumbnailSearch.vue";
   }
 })
 export default class ImagesSearch extends Vue {
+  currentPage = 3;
+
   arrImages = [
     {
       id: 1,
@@ -60,6 +75,74 @@ export default class ImagesSearch extends Vue {
     },
     {
       id: 6,
+      src:
+        "https://www.blueskytravelaz.com/wp-content/uploads/revslider/homepage%201/slider-3-1024x480.jpg",
+      alt: "image3"
+    },
+    {
+      id: 7,
+      src: "https://picsum.photos/1024/480/?image=10",
+      alt: "image1"
+    },
+    {
+      id: 8,
+      src:
+        "https://adventuretours.com.mx/wp-content/uploads/2018/03/m-7-1024x480.jpg",
+      alt: "image2"
+    },
+    {
+      id: 9,
+      src:
+        "https://www.blueskytravelaz.com/wp-content/uploads/revslider/homepage%201/slider-3-1024x480.jpg",
+      alt: "image3"
+    },
+    {
+      id: 10,
+      src: "https://picsum.photos/1024/480/?image=10",
+      alt: "image1"
+    },
+    {
+      id: 11,
+      src:
+        "https://adventuretours.com.mx/wp-content/uploads/2018/03/m-7-1024x480.jpg",
+      alt: "image2"
+    },
+    {
+      id: 12,
+      src:
+        "https://www.blueskytravelaz.com/wp-content/uploads/revslider/homepage%201/slider-3-1024x480.jpg",
+      alt: "image3"
+    },
+    {
+      id: 13,
+      src: "https://picsum.photos/1024/480/?image=10",
+      alt: "image1"
+    },
+    {
+      id: 14,
+      src:
+        "https://adventuretours.com.mx/wp-content/uploads/2018/03/m-7-1024x480.jpg",
+      alt: "image2"
+    },
+    {
+      id: 15,
+      src:
+        "https://www.blueskytravelaz.com/wp-content/uploads/revslider/homepage%201/slider-3-1024x480.jpg",
+      alt: "image3"
+    },
+    {
+      id: 16,
+      src: "https://picsum.photos/1024/480/?image=10",
+      alt: "image1"
+    },
+    {
+      id: 17,
+      src:
+        "https://adventuretours.com.mx/wp-content/uploads/2018/03/m-7-1024x480.jpg",
+      alt: "image2"
+    },
+    {
+      id: 18,
       src:
         "https://www.blueskytravelaz.com/wp-content/uploads/revslider/homepage%201/slider-3-1024x480.jpg",
       alt: "image3"

@@ -5,6 +5,8 @@ import Images from "@/views/Images.vue";
 import ImagesList from "@/views/ImagesList.vue";
 import ImagesSearch from "@/views/ImagesSearch.vue";
 import MyAccount from "@/views/MyAccount.vue";
+import ImagesEdit from "@/views/ImagesEdit.vue";
+import ImagesDownload from "@/views/ImagesDownload.vue";
 
 Vue.use(VueRouter);
 
@@ -20,6 +22,11 @@ const routes: Array<RouteConfig> = [
     component: Images
   },
   {
+    path: "/images/:id",
+    name: "ImagesEdit",
+    component: ImagesEdit
+  },
+  {
     path: "/images-list",
     name: "ImagesList",
     component: ImagesList
@@ -28,6 +35,11 @@ const routes: Array<RouteConfig> = [
     path: "/images-search",
     name: "ImagesSearch",
     component: ImagesSearch
+  },
+  {
+    path: "/images-download/:id",
+    name: "ImagesDownload",
+    component: ImagesDownload
   },
   {
     path: "/my-account",

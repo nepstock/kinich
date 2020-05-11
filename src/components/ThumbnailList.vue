@@ -3,6 +3,8 @@
     <b-row>
       <b-col cols="6" sm="2" class="pb-3" v-for="item in arrImg" :key="item.id">
         <b-img
+          v-b-tooltip.hover title="Editar"
+          :id="item.id"
           class="img-click"
           @click="clickedImg(item)"
           thumbnail
@@ -17,6 +19,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import router from "@/router/index";
 
 @Component
 export default class ThumbnailList extends Vue {
@@ -24,7 +27,8 @@ export default class ThumbnailList extends Vue {
   showOverlay = true;
 
   clickedImg(item: any) {
-    alert('your clicked image ' + item.id)
+    // alert('your clicked image ' + item.id)
+    router.push({ name: "ImagesEdit", params: { id: item.id} });
   }
 
   created() {

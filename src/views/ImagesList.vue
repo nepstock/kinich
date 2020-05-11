@@ -1,13 +1,15 @@
 <template>
   <div class="bg-light">
-    <section class="vertical-h80 pt-5">
+    <section class="vertical-h80 py-5">
       <b-container>
         <b-row v-if="arrImages.length === 0">
           <b-col>
             <h2>
               <i class="fas fa-inbox fa-3x text-muted"></i>
             </h2>
-            <h3 class="text-muted h6 font-weight-bolder">Actualmente no tienes imágenes cargadas.</h3>
+            <h3 class="text-muted h6 font-weight-bolder">
+              Actualmente no tienes imágenes cargadas.
+            </h3>
           </b-col>
         </b-row>
         <b-row v-else>
@@ -20,6 +22,19 @@
           </b-col>
           <b-col cols="12">
             <ThumbnailList :arrImg="arrImages" />
+          </b-col>
+        </b-row>
+        <b-row class="justify-content-end">
+          <b-col sm="4">
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="100"
+              :per-page="1"
+              align="fill"
+              size="sm"
+              first-number
+              last-number
+            ></b-pagination>
           </b-col>
         </b-row>
       </b-container>
@@ -39,7 +54,7 @@ import SearchButton from "@/components/SearchButton.vue";
   }
 })
 export default class ImagesList extends Vue {
-
+  currentPage = 3;
   // arrImages = []
 
   arrImages = [
@@ -102,7 +117,37 @@ export default class ImagesList extends Vue {
       id: 12,
       src: "https://picsum.photos/250/250/?image=59",
       alt: "image6"
+    },
+    {
+      id: 13,
+      src: "https://picsum.photos/250/250/?image=58",
+      alt: "image1"
+    },
+    {
+      id: 14,
+      src: "https://picsum.photos/250/250/?image=57",
+      alt: "image2"
+    },
+    {
+      id: 15,
+      src: "https://picsum.photos/250/250/?image=59",
+      alt: "image3"
+    },
+    {
+      id: 16,
+      src: "https://picsum.photos/250/250/?image=58",
+      alt: "image4"
+    },
+    {
+      id: 17,
+      src: "https://picsum.photos/250/250/?image=57",
+      alt: "image5"
+    },
+    {
+      id: 18,
+      src: "https://picsum.photos/250/250/?image=59",
+      alt: "image6"
     }
-  ]
+  ];
 }
 </script>

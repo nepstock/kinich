@@ -1,25 +1,35 @@
 body {
-  font-family: 'Spartan', sans-serif;
+  font-family: "Spartan", sans-serif;
   text-align: center;
   color: #2c3e50;
   background: #f1f2f5;
 }
 
-h1, h2, h3, h4, h5 , h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
+}
+
+img {
+  max-width: 100%;
 }
 
 label {
   margin-bottom: 0;
   font-weight: 600;
+  font-size: 0.8rem;
 }
 
 .font-weight-bolder {
-  font-weight: 600!important;
+  font-weight: 600 !important;
 }
 
 .text-muted {
-  color: #CFCECE!important;
+  color: #cfcece !important;
 }
 
 .section-padding {
@@ -51,20 +61,19 @@ label {
 }
 
 .btn-sm {
-  padding: .5rem .75rem;
-  font-size: .775rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.775rem;
   line-height: 1.2;
   font-weight: 600;
 }
 
- 
 /** CAROUSEL COMPONENT **/
 .carousel-caption {
   bottom: 35%;
   h1 {
     font-weight: 600;
   }
-  p{
+  p {
     font-weight: 600;
   }
 }
@@ -72,5 +81,23 @@ label {
 /** MODAL **/
 
 .modal-content {
-  border-radius: .7rem
+  border-radius: 0.7rem;
+}
+
+/** DROPZONE  **/
+.vue-dropzone > .dz-preview .dz-remove {
+  padding: 0.5rem 0.75rem!important;
+  font-size: 0.775rem!important;
+  text-transform: capitalize !important;
+  line-height: 1.2;
+  font-weight: 600!important;
+  border-radius: 0.2rem;
+  color: #ffffff!important;
+  border-color: transparent!important;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
 }
