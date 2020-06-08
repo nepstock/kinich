@@ -2,11 +2,6 @@
   <div class="bg-light">
     <section class="vertical-h80 pb-5">
       <b-container>
-        <b-row>
-          <b-col>
-            <Search />
-          </b-col>
-        </b-row>
         <b-row class="thumbnail-search">
           <b-col>
             <ThumbnailSearch :arrImg="arrImages" />
@@ -32,12 +27,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Search from "@/components/Search.vue";
 import ThumbnailSearch from "@/components/ThumbnailSearch.vue";
 
 @Component({
   components: {
-    Search,
     ThumbnailSearch
   }
 })
@@ -151,8 +144,3 @@ export default class ImagesSearch extends Vue {
 }
 </script>
 
-<style scoped>
-.thumbnail-search {
-  margin-top: 100px;
-}
-</style>

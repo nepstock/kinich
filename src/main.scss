@@ -116,3 +116,10 @@ label {
 .custom-control-label::after {
   top: .05rem;
 }
+
+.table.b-table > tbody > .table-active.b-table-row-selected,
+.table.b-table > tbody > .table-active.b-table-row-selected > th,
+.table.b-table > tbody > .table-active.b-table-row-selected > td {
+  background: #a9ddf2 !important;
+  outline: none;
+}

@@ -2,6 +2,7 @@
   <div>
     <b-navbar
       class="navbar-custom bg-transparent'"
+      :class="typeNavbar ? '' : 'absolute'"
       :type="typeNavbar ? 'light' : 'dark'"
     >
       <b-navbar-brand to="/">NepeStock</b-navbar-brand>
@@ -30,7 +31,7 @@
             id="dropdown-offset"
             :right="true"
             size="sm"
-            variant="primary"
+            variant="link"
           >
             <template v-slot:button-content>
               <i class="fas fa-user mr-2"></i> Iván Correa
@@ -44,10 +45,10 @@
               </router-link>
             </b-dropdown-item>
             <b-dropdown-item size="sm">
-              <router-link to="/images">
+              <router-link :to="{ name: 'Profile' }">
                 <small class="text-body"
-                  ><i class="fas fa-image mr-2 text-muted"></i>Subir
-                  imágenes</small
+                  ><i class="fas fa-user mr-2 text-muted"></i>Ir al
+                  Mi cuenta</small
                 >
               </router-link>
             </b-dropdown-item>
@@ -61,8 +62,6 @@
         </b-nav-form>
       </b-navbar-nav>
     </b-navbar>
-    <NavRoutes />
-
     <b-modal
       id="login"
       :hide-header="true"
@@ -86,9 +85,12 @@
 </template>
 <style scoped>
 .navbar-custom {
+  position: relative;
+  width: 100%;
+}
+.navbar-custom.absolute {
   position: absolute;
   top: 0;
-  width: 100%;
   z-index: 3;
 }
 </style>
@@ -119,7 +121,7 @@ export default class NavBar extends Vue {
     this.isLogin = true;
     this.showSignIn = false;
     this.popToast("info", "b-toaster-bottom-right");
-    router.push({ name: "Images" });
+    router.push({ name: "Profile" });
   }
 
   isLogout() {

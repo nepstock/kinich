@@ -10,6 +10,9 @@
           :src="item.src"
           :alt="item.alt"
         ></b-img>
+        <div class="w-100 p-3 bg-light">
+          <p class="small">fecha de descarga: <span class="font-weight-bold">12/05/2020</span></p>
+        </div>
       </b-col>
     </b-row>
   </b-overlay>

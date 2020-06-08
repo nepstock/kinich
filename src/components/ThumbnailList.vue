@@ -1,7 +1,7 @@
 <template>
   <b-overlay :show="showOverlay" opacity="0.65">
     <b-row>
-      <b-col cols="6" sm="2" class="pb-3" v-for="item in arrImg" :key="item.id">
+      <b-col cols="6" sm="3" class="pb-3" v-for="item in arrImg" :key="item.id">
         <b-img
           v-b-tooltip.hover title="Editar"
           :id="item.id"
@@ -12,6 +12,9 @@
           :src="item.src"
           :alt="item.alt"
         ></b-img>
+        <div class="w-100 p-3 bg-light">
+          <p class="small">fecha de carga: <span class="font-weight-bold">12/05/2020</span></p>
+        </div>
       </b-col>
     </b-row>
   </b-overlay>

@@ -1,6 +1,6 @@
 <template>
   <div class="bg-light">
-    <section class="vertical-h80 py-5">
+    <section class="vertical-h80">
       <b-container>
         <b-row v-if="arrImages.length === 0">
           <b-col>

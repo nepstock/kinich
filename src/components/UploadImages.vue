@@ -22,7 +22,7 @@
     </vue2Dropzone>
     <b-row v-if="arrFiles.length > 0" class="justify-content-center">
       <b-col class="mt-4">
-        <router-link to="/images-list">
+        <router-link :to="{ name: 'UploadImages' }">
           <b-button class="px-4" variant="primary" size="sm"
             >Editar imagenes <i class="fas fa-pencil-alt ml-2"></i
           ></b-button>

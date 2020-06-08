@@ -1,77 +1,41 @@
 <template>
   <b-overlay :show="showOverlay" opacity="0.65">
     <div class="bg-light">
-      <section class="vertical-h80 section-padding">
-        <b-container class="text-left">
+      <section class="vertical-h80">
+        <b-container class="text-left" fluid>
           <b-row class="justify-content-center">
-            <b-col sm="2">
-              <b-avatar variant="primary" text="IC" size="6rem"></b-avatar>
-              <h1 class="h6 font-weight-bolder mt-3">Iván Correa</h1>
-              <p class="small">
-                Miembro desde<br />
-                <small>20 de febrero del 2020</small>
-              </p>
-              <hr />
-              <b-link class="ml-2 small font-weight-bolder">
-                cancelar mi cuenta
-              </b-link>
+            <b-col sm="3" md="2" class="sidebar pt-4">
+              <b-nav vertical small class="w-100">
+                <b-nav-item :to="{ name: 'Profile' }" exact
+                  ><i class="fas fa-user mr-2"></i>Mi perfil</b-nav-item
+                >
+                <b-nav-item :to="{ name: 'Plan' }" exact
+                  ><i class="fas fa-dollar-sign mr-2"></i>Mi plan</b-nav-item
+                >
+                <b-nav-item :to="{ name: 'Downloads' }" exact
+                  ><i class="fas fa-file-download mr-2"></i>Mis
+                  descargas</b-nav-item
+                >
+                <b-nav-item :to="{ name: 'UploadImages' }" exact
+                  ><i class="fas fa-file-image mr-2"></i>Mis cargas</b-nav-item
+                >
+                <b-nav-item :to="{ name: 'Payments' }" exact
+                  ><i class="fas fa-file-invoice-dollar mr-2"></i
+                  >Facturación</b-nav-item
+                >
+                <b-nav-item :to="{ name: 'MethodPay' }" exact
+                  ><i class="far fa-credit-card mr-2"></i>Forma pago</b-nav-item
+                >
+                <b-nav-item :to="{ name: 'Upload' }" exact
+                  ><i class="fas fa-cloud-upload-alt mr-2"></i>Subir una
+                  imagen</b-nav-item
+                >
+              </b-nav>
             </b-col>
-            <b-col sm="6">
-              <dl class="row">
-                <dt class="col-sm-3">Nombre:</dt>
-                <dd class="col-sm-9">
-                  <p>Pedro Iván Correa Benavente</p>
-                </dd>
-
-                <dt class="col-sm-3">Correo:</dt>
-                <dd class="col-sm-9">
-                  <p>
-                    ivan@mail.com.mx
-                  </p>
-                </dd>
-                <dt class="col-sm-3">Contraseña:</dt>
-                <dd class="col-sm-9">
-                  <p>
-                    **************
-                    <b-link class="ml-2 small font-weight-bolder"
-                      >cambiar</b-link
-                    >
-                  </p>
-                </dd>
-
-                <dt class="col-sm-3">Membresía</dt>
-                <dd class="col-sm-9">
-                  <p>
-                    <b-badge variant="warning">Profesional</b-badge>
-                    <b-link class="ml-2 small font-weight-bolder"
-                      >cambiar de plan</b-link
-                    >
-                  </p>
-                </dd>
-
-                <dt class="col-sm-3">
-                  Método de pago
-                </dt>
-                <dd class="col-sm-9">
-                  <p>
-                    **** **** **** 0232
-                    <i class="fab fa-cc-visa ml-2"></i>
-                    <b-link class="ml-2 small font-weight-bolder"
-                      >agregar otra tarjeta +</b-link
-                    >
-                  </p>
-                </dd>
-
-                <dt class="col-sm-3">Facturación (RFC)</dt>
-                <dd class="col-sm-9">
-                  <p>
-                    ASD8730DF92
-                    <b-link class="ml-2 small font-weight-bolder"
-                      >cambiar de RFC</b-link
-                    >
-                  </p>
-                </dd>
-              </dl>
+            <b-col sm="9" md="10">
+              <div class="main-content py-4 mt-2">
+                <router-view></router-view>
+              </div>
             </b-col>
           </b-row>
         </b-container>
@@ -96,7 +60,16 @@ export default class MyAccount extends Vue {
 </script>
 
 <style scoped>
-dt {
-  font-weight: 600 !important;
+.sidebar {
+  height: calc(100vh - 56px);
+  background: #000;
+}
+.main-content {
+  height: calc(100vh - 76px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.nav-link.router-link-exact-active.router-link-active {
+  color: #f3ce00;
 }
 </style>

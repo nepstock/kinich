@@ -1,19 +1,21 @@
 <template>
   <b-overlay :show="showOverlay" opacity="0.65">
     <div class="bg-light">
-      <section class="vertical-h80 py-5">
+      <section class="vertical-h80">
         <b-container class="text-left">
-          <b-row class="justify-content-center">
-            <b-col cols="12" sm="6">
-              <img
-                src="http://mundoenpositivo.com/wp-content/uploads/2019/07/paisaje.jpg"
-                alt="test"
-              />
-            </b-col>
-            <b-col sm="4">
-              <FormImagesEdit @add="successAdd" />
-            </b-col>
-          </b-row>
+          <b-card>
+            <b-row class="justify-content-center">
+              <b-col cols="12" sm="7">
+                <img
+                  src="http://mundoenpositivo.com/wp-content/uploads/2019/07/paisaje.jpg"
+                  alt="test"
+                />
+              </b-col>
+              <b-col sm="5">
+                <FormImagesEdit @add="successAdd" />
+              </b-col>
+            </b-row>
+          </b-card>
         </b-container>
       </section>
     </div>
@@ -33,10 +35,10 @@ export default class ImagesEdit extends Vue {
   showOverlay = true;
 
   successAdd(image: object) {
-    this.showOverlay = true
+    this.showOverlay = true;
     setTimeout(() => {
       this.showOverlay = false;
-      this.makeToast('success', '¡Se guardó correctamente la imagen!')
+      this.makeToast("success", "¡Se guardó correctamente la imagen!");
     }, 1500);
   }
 

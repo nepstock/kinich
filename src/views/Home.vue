@@ -4,6 +4,21 @@
       <Search @search="searchValue" />
       <Carousel :arrCarousel="arrIntro" />
     </section>
+    <section class="section-padding">
+      <b-container>
+        <b-row>
+          <b-col sm="12">
+            <h2 class="font-weight-bold">Temas</h2>
+          </b-col>
+          <b-col>
+            <CardHover :items="themes" />
+          </b-col>
+        </b-row>
+      </b-container>
+    </section>
+    <section class="section-padding bg-light">
+      <b-container></b-container>
+    </section>
   </div>
 </template>
 
@@ -12,11 +27,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import Carousel from "@/components/Carousel.vue";
 import Search from "@/components/Search.vue";
+import CardHover from "@/components/CardHover.vue";
 
 @Component({
   components: {
     Carousel,
-    Search
+    Search,
+    CardHover
   }
 })
 export default class Home extends Vue {
@@ -38,6 +55,27 @@ export default class Home extends Vue {
       src: "https://www.blueskytravelaz.com/wp-content/uploads/revslider/homepage%201/slider-3-1024x480.jpg",
       text:
         "Disfrute de 10 o 20 clips cada mes con los nuevos planes mensuales y anuales para satisfacer todas sus necesidades de video, lo que incluye toda la biblioteca de videos en HD y 4K."
+    }
+  ];
+
+  themes: Array<object> = [
+    {
+      title: "Paisajes",
+      bg: "https://picsum.photos/1024/480/?image=10",
+      description:
+        "Las mejores imágenes de paisajes"
+    },
+    {
+      title: "Ciudades",
+      bg: "https://static1lonelyplanetes.cdnstatics.com/sites/default/files/styles/max_1300x1300/public/fotos/mexico_ciudaddemexico_paseoreforma_angelindependencia_shutterstockrf_1066463744_aberu.go_shutterstock.jpg?itok=MjJFsqoK",
+      description:
+        "Las mejores imágenes de ciudades del mundo"
+    },
+    {
+      title: "Gastronomía",
+      bg: "https://foodandtravel.mx/wp-content/uploads/2018/12/probemosmexicoportada.jpg",
+      description:
+        "Las mejores imágenes de países"
     }
   ];
 

@@ -7,26 +7,28 @@
         :showLightBox="false"
         :showThumbs="false"
       ></LightBox>
-      <section class="vertical-h80 py-5">
+      <section class="vertical-h80">
         <b-container class="text-left">
-          <b-row class="justify-content-center">
-            <b-col cols="12" sm="6">
-              <img
-                src="http://mundoenpositivo.com/wp-content/uploads/2019/07/paisaje.jpg"
-                alt="test"
-              />
-              <b-row class="justify-content-end">
-                <b-col class="text-right">
-                  <b-button @click="showImage" size="sm" variant="light"
-                    >Vista previa <i class="fas fa-search-plus ml-2"></i
-                  ></b-button>
-                </b-col>
-              </b-row>
-            </b-col>
-            <b-col sm="4">
-              <FormImagesDownload />
-            </b-col>
-          </b-row>
+          <b-card>
+            <b-row class="justify-content-center">
+              <b-col cols="12" sm="6">
+                <img
+                  src="http://mundoenpositivo.com/wp-content/uploads/2019/07/paisaje.jpg"
+                  alt="test"
+                />
+                <b-row class="justify-content-end">
+                  <b-col class="text-right">
+                    <b-button @click="showImage" size="sm" variant="light"
+                      >Vista previa <i class="fas fa-search-plus ml-2"></i
+                    ></b-button>
+                  </b-col>
+                </b-row>
+              </b-col>
+              <b-col sm="6">
+                <FormImagesDownload />
+              </b-col>
+            </b-row>
+          </b-card>
         </b-container>
       </section>
     </div>
