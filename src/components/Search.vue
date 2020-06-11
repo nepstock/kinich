@@ -2,7 +2,7 @@
   <div class="search px-3 px-md-5" :class="spacingBar ? 'active' : ''">
     <b-input-group>
       <b-input-group-prepend>
-        <b-dropdown size="sm" :text="textDropdown" variant="info">
+        <b-dropdown :disabled="true" size="sm" :text="textDropdown" variant="info">
           <b-dropdown-item @click="clickOption('Todas las imágenes')" size="sm">
             <small><i class="far fa-images mr-2"></i>Todas las imágenes</small>
           </b-dropdown-item>
@@ -30,9 +30,10 @@
 </template>
 <style lang="css" scoped>
 .search {
-  width: 100%;
+  width: 70%;
+  margin-left: 15%;
   position: absolute;
-  top: 60px;
+  top: 30%;
   z-index: 2;
 }
 

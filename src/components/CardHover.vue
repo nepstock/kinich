@@ -98,9 +98,9 @@ export default class CardHover extends Vue {
   transition: all 0.3s ease;
 }
 
-.card:hover {
-  height: 260px;
-}
+// .card:hover {
+//   height: 260px;
+// }
 
 .card:hover .info {
   height: 90%;
