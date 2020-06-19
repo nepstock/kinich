@@ -18,10 +18,10 @@
         </b-dropdown>
       </b-input-group-prepend>
 
-      <b-form-input type="search" placeholder="Buscar imágenes"></b-form-input>
+      <b-form-input v-model="search" @keyup.enter="searchValue(search)" type="search" placeholder="Buscar imágenes"></b-form-input>
 
       <b-input-group-append>
-        <b-button size="sm" variant="danger"
+        <b-button size="sm" variant="danger" @click="searchValue(search)" 
           >Buscar <i class="fas fa-search ml-2"></i
         ></b-button>
       </b-input-group-append>
@@ -73,6 +73,8 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Search extends Vue {
   textDropdown = "Todas las imágenes";
 
+  search = "";
+
   get spacingBar() {
     return this.$route.path !== "/" ? true : false;
   }
@@ -80,6 +82,11 @@ export default class Search extends Vue {
   clickOption(value: string) {
     this.textDropdown = value;
     this.$emit("search", value);
+  }
+
+  searchValue(value: string) {
+    console.log(value);
+    this.$router.push({ name: "Search", query: { q: value} });
   }
 }
 </script>

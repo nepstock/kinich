@@ -11,6 +11,7 @@ import Profile from "@/views/childs/Profile.vue";
 import Plan from "@/views/childs/Plan.vue";
 import Payments from "@/views/childs/Payments.vue";
 import MethodPay from "@/views/childs/MethodPay.vue";
+import Search from "@/views/Search.vue";
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,12 @@ const routes: Array<RouteConfig> = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/search",
+    name: "Search",
+    component: Search,
+    props: (route) => ({ query: route.query.q })
   },
   {
     path: "/my-account",
