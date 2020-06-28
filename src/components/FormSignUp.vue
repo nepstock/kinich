@@ -87,6 +87,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import API, { login } from "@/api/services";
 
 @Component
 export default class FormSignUp extends Vue {
@@ -99,10 +100,27 @@ export default class FormSignUp extends Vue {
   onSubmit(evt: Event) {
     evt.preventDefault();
     this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-    }, 1500)
-    // alert(JSON.stringify(this.form));
+    API.post("/users", this.form)
+      .then(resp => {
+        console.log("response", resp.data);
+        const body = {
+          'username': this.form.email,
+          'password': this.form.password,
+          'client_id': process.env.VUE_APP_CLIENT_ID
+        };
+
+        login(body);
+        setTimeout(() => {
+          if (this.$store.state.username !== "") {
+            this.$emit("success", false);
+          }
+        }, 1000);
+        
+      })
+      .catch(err => {
+        console.log(err);
+        this.loading = false;
+      });
   }
 }
 </script>

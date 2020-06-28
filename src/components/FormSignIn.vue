@@ -29,10 +29,16 @@
         ></b-form-input>
       </b-form-group>
       <b-form-group class="mb-0 mt-5">
-        <b-button type="submit" variant="primary" block pill :disabled="loading">
+        <b-button
+          type="submit"
+          variant="primary"
+          block
+          pill
+          :disabled="loading"
+        >
           <span v-if="!loading">Ingresar</span>
           <span v-else>
-            Ingresando... 
+            Ingresando...
             <b-spinner variant="light" label="Spinning" small></b-spinner>
           </span>
         </b-button>
@@ -43,23 +49,31 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { login } from "@/api/services";
 
 @Component
 export default class FormSignIn extends Vue {
   form = {
-    user: "",
-    password: ""
+    'user': "",
+    'password': "",
+    'client_id': process.env.VUE_APP_CLIENT_ID
   };
   loading = false;
 
   onSubmit(evt: Event) {
     evt.preventDefault();
     this.loading = true;
+    login(this.form).then(response => {
+      console.log('response from login',response)
+    });
+    
     setTimeout(() => {
-      this.loading = false;
-      this.$emit('success', true);
-    }, 2500)
-    // alert(JSON.stringify(this.form));
+      if (this.$store.state.username !== "") {
+        // this.loading = false;
+        this.$emit("success", false);
+      }
+    }, 1000);
+    
   }
 }
 </script>

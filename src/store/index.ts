@@ -4,8 +4,32 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
+  state: {
+    token: "",
+    username: "",
+    email: ""
+  },
+  mutations: {
+    uploadToken(state, token) {
+      state.token = token;
+    },
+    uploadUsername(state, username) {
+      state.username = username;
+    },
+    uploadEmail(state, email) {
+      state.email = email;
+    }
+  },
+  actions: {
+    uploadToken({ commit }, token) {
+      commit("uploadToken", token);
+    },
+    uploadUsername({ commit }, username) {
+      commit("uploadUsername", username);
+    },
+    uploadEmail({ commit }, email) {
+      commit("uploadEmail", email);
+    }
+  },
   modules: {}
 });

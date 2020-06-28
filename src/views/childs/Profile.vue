@@ -9,13 +9,13 @@
           </b-col>
           <dt class="col-sm-3">Nombre:</dt>
           <dd class="col-sm-9">
-            <p>Pedro Iván Correa Benavente</p>
+            <p>{{ username }}</p>
           </dd>
 
           <dt class="col-sm-3">Correo:</dt>
           <dd class="col-sm-9">
             <p>
-              ivan@mail.com.mx
+              {{ email }}
             </p>
           </dd>
           <dt class="col-sm-3">Contraseña:</dt>
@@ -63,7 +63,7 @@
     </b-col>
     <b-col sm="4" class="px-3">
       <b-avatar variant="primary" text="IC" size="6rem"></b-avatar>
-      <h1 class="h6 font-weight-bolder mt-3">Iván Correa</h1>
+      <h1 class="h6 font-weight-bolder mt-3">{{ username }}</h1>
       <p class="small">
         Miembro desde<br />
         <small>20 de febrero del 2020</small>
@@ -80,7 +80,15 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class Profile extends Vue {}
+export default class Profile extends Vue {
+  get username() {
+    return this.$store.state.username;
+  }
+
+  get email() {
+    return this.$store.state.email;
+  }
+}
 </script>
 
 <style scoped>
