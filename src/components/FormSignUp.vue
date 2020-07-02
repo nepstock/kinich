@@ -26,7 +26,7 @@
         </div>
       </b-col>
       <b-col class="px-4 py-4">
-        <b-form class="text-left" @submit="onSubmit">
+        <b-form class="text-left" @submit.prevent.stop="onSubmit" novalidate>
           <h3>Registrarse</h3>
           <b-form-group
             id="input-group-2"
@@ -36,10 +36,14 @@
           >
             <b-form-input
               id="input-2"
-              v-model="form.email"
+              v-model.trim="$v.email.$model"
+              :state="$v.email.$dirty ? !$v.email.$error : 'null'"
               type="email"
               placeholder=""
             ></b-form-input>
+            <b-form-invalid-feedback>
+              Ingresa una correo electronico válido
+            </b-form-invalid-feedback>
           </b-form-group>
 
           <b-form-group
@@ -50,10 +54,15 @@
           >
             <b-form-input
               id="input-1"
-              v-model="form.password"
+              v-model="$v.password.$model"
+              :state="$v.password.$dirty ? !$v.password.$error : 'null'"
               type="password"
               placeholder=""
             ></b-form-input>
+            <b-form-invalid-feedback>
+              Ingresa una contraseña que contenga al menos una letra mayúscula,
+              letra minúscula, número y signo (!¡?¿.,-_#$%&/()[]{};:@+*)
+            </b-form-invalid-feedback>
           </b-form-group>
           <b-form-group>
             <p class="small">
@@ -64,7 +73,7 @@
               de Shutterstock.
             </p>
           </b-form-group>
-          <b-form-group class="mb-0 mt-5">
+          <b-form-group class="mb-0 mt-3">
             <b-button
               type="submit"
               variant="primary"
@@ -88,39 +97,52 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import API, { login } from "@/api/services";
+import { Validations } from "vuelidate-property-decorators";
+import { required } from "vuelidate/lib/validators";
+import { email, password } from "@/utils/validations";
 
 @Component
 export default class FormSignUp extends Vue {
-  form = {
-    email: "",
-    password: ""
-  };
+  email = "";
+  password = "";
   loading = false;
+
+  @Validations()
+  validations = {
+    email: { required, email },
+    password: { required, password }
+  };
 
   onSubmit(evt: Event) {
     evt.preventDefault();
     this.loading = true;
-    API.post("/users", this.form)
-      .then(resp => {
-        console.log("response", resp.data);
-        const body = {
-          'username': this.form.email,
-          'password': this.form.password,
-          'client_id': process.env.VUE_APP_CLIENT_ID
-        };
+    this.$v.$touch();
+    if (!this.$v.$invalid) {
+      API.post("/users", { email: this.email, password: this.password })
+        .then(resp => {
+          console.log("response", resp.data);
+          const body = {
+            'username': this.email,
+            'password': this.password,
+            'client_id': process.env.VUE_APP_CLIENT_ID
+          };
 
-        login(body);
-        setTimeout(() => {
-          if (this.$store.state.username !== "") {
-            this.$emit("success", false);
-          }
-        }, 1000);
-        
-      })
-      .catch(err => {
-        console.log(err);
+          login(body);
+          setTimeout(() => {
+            if (this.$store.state.username !== "") {
+              this.$emit("success", false);
+            }
+          }, 500);
+        })
+        .catch(err => {
+          console.log(err);
+          this.loading = false;
+        });
+    } else {
+      setTimeout(() => {
         this.loading = false;
-      });
+      }, 500);
+    }
   }
 }
 </script>

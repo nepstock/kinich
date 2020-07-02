@@ -10,8 +10,10 @@ import router from "./router";
 import store from "./store";
 import vSelect from "vue-select";
 import VueLazyLoad from "vue-lazyload";
-import VueAgile from 'vue-agile'
+import VueAgile from 'vue-agile';
+import Vuelidate from 'vuelidate';
 
+Vue.use(Vuelidate);
 Vue.use(VueAgile);
 Vue.use(VueLazyLoad);
 Vue.component("v-select", vSelect);
