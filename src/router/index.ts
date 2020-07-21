@@ -7,6 +7,7 @@ import ImagesSearch from "@/views/ImagesSearch.vue";
 import MyAccount from "@/views/MyAccount.vue";
 import ImagesEdit from "@/views/ImagesEdit.vue";
 import ImagesDownload from "@/views/ImagesDownload.vue";
+import ImagesUploadView from "@/views/childs/ImagesUploadView.vue";
 import Profile from "@/views/childs/Profile.vue";
 import Plan from "@/views/childs/Plan.vue";
 import Payments from "@/views/childs/Payments.vue";
@@ -46,6 +47,11 @@ const routes: Array<RouteConfig> = [
         path: "/my-account/upload/images",
         name: "UploadImages",
         component: ImagesList
+      },
+      {
+        path: "/my-account/upload/view/images",
+        name: "ImagesUploadView",
+        component: ImagesUploadView
       },
       {
         path: "/my-account/downloads",

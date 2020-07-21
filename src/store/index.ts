@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     token: "",
     username: "",
-    email: ""
+    email: "",
+    addInformation: [{send: false}]
   },
   mutations: {
     uploadToken(state, token) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     uploadEmail(state, email) {
       state.email = email;
+    },
+    uploadAddInformation(state, addInformation) {
+      state.addInformation = addInformation;
     }
   },
   actions: {
@@ -29,6 +33,9 @@ export default new Vuex.Store({
     },
     uploadEmail({ commit }, email) {
       commit("uploadEmail", email);
+    },
+    uploadAddInformation({ commit }, addInformation) {
+      commit("uploadAddInformation", addInformation);
     }
   },
   modules: {}

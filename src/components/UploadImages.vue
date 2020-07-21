@@ -20,11 +20,11 @@
         </div>
       </div>
     </vue2Dropzone>
-    <b-row v-if="arrFiles.length > 0" class="justify-content-center">
-      <b-col class="mt-4">
-        <router-link :to="{ name: 'UploadImages' }">
-          <b-button class="px-4" variant="primary" size="sm"
-            >Editar imagenes <i class="fas fa-pencil-alt ml-2"></i
+    <b-row class="justify-content-end">
+      <b-col cols="auto" class="mt-4">
+        <router-link :to="{ name: 'ImagesUploadView' }">
+          <b-button class="px-4" variant="primary" size="sm" :disabled="arrFiles.length === 0"
+            >Continuar <i class="fas fa-arrow-right ml-2"></i
           ></b-button>
         </router-link>
       </b-col>
@@ -78,6 +78,10 @@ export default class UploadImages extends Vue {
 
   removeFile(file: any, error: any, xhr: any) {
     console.log("eliminado", file);
+    const index = this.arrFiles.indexOf(file);
+    if (index > -1) {
+      this.arrFiles.splice(index, 1);
+    }
     this.makeToast("danger", "Se eliminó correctamente tu imagen");
   }
 
