@@ -4,32 +4,42 @@
       <img src="https://picsum.photos/250/250/?image=54" alt="image" />
     </div>
     <div class="checkbox-container">
-      <label class="checkbox-label">
+      <label v-if="state === 'update'" class="checkbox-label">
         <input type="checkbox" v-model="check" @change="checkedItem(check)" />
         <span class="checkbox-custom rectangular"></span>
       </label>
+      <p v-if="state === 'pending'" class="mb-0 small text-white">
+        <i class="fas fa-history mr-2"></i>Pendiente
+      </p>
+      <p v-if="state === 'success'" class="mb-0 small text-white">
+        <i class="far fa-check-square mr-2"></i>Revisado
+      </p>
       <!-- <div class="input-title">Rectangular</div> -->
     </div>
     <!-- <div class="clear"></div> -->
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class CheckboxCard extends Vue {
+  @Prop({ default: "update" }) state!: string;
   check = false;
   checkedItem(value: boolean) {
-    
     this.check = value;
-    console.log('value emited checbox', value);
+    console.log("value emited checbox", value);
     this.$emit("success", value);
+  }
+
+  mounted() {
+    this.state === "update" ? (this.check = false) : (this.check = true);
   }
 }
 </script>
 <style scoped>
 .card-check.false {
-  background-color: #CCCCCC;
+  background-color: #cccccc;
 }
 .card-check {
   width: 100%;

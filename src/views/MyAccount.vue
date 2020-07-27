@@ -16,7 +16,7 @@
                   ><i class="fas fa-file-download mr-2"></i>Mis
                   descargas</b-nav-item
                 >
-                <b-nav-item :to="{ name: 'UploadImages' }" exact
+                <b-nav-item :to="{ name: 'ImagesUploadView' }" exact
                   ><i class="fas fa-file-image mr-2"></i>Mis cargas</b-nav-item
                 >
                 <b-nav-item :to="{ name: 'Payments' }" exact
@@ -62,7 +62,7 @@ export default class MyAccount extends Vue {
 <style scoped>
 .sidebar {
   height: calc(100vh - 56px);
-  background: #000;
+  background: #F4F4F4;
 }
 .main-content {
   height: calc(100vh - 76px);

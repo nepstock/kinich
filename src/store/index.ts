@@ -8,7 +8,8 @@ export default new Vuex.Store({
     token: "",
     username: "",
     email: "",
-    addInformation: [{send: false}]
+    addInformation: [{send: false}],
+    modalImages: false
   },
   mutations: {
     uploadToken(state, token) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     uploadAddInformation(state, addInformation) {
       state.addInformation = addInformation;
+    },
+    updateModalImages(state, modal) {
+      state.modalImages = modal;
     }
   },
   actions: {
@@ -36,6 +40,9 @@ export default new Vuex.Store({
     },
     uploadAddInformation({ commit }, addInformation) {
       commit("uploadAddInformation", addInformation);
+    },
+    updateModalImages({commit}, modal) {
+      commit("updateModalImages", modal);
     }
   },
   modules: {}

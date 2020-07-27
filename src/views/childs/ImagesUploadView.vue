@@ -126,7 +126,10 @@ export default class UploadImagesView extends Vue {
 
   created() {
     setTimeout(() => {
-      this.$refs["modal"].show();
+      if(!store.state.modalImages) {
+        this.$refs["modal"].show();
+        store.dispatch("updateModalImages", true);
+      }
     }, 1000);
   }
 }
