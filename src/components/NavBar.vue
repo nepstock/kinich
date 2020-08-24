@@ -6,6 +6,9 @@
       :type="typeNavbar ? 'light' : 'dark'"
     >
       <b-navbar-brand to="/">NepeStock</b-navbar-brand>
+      <b-navbar-nav v-if="this.$route.path === '/'">
+        <b-nav-item class="small font-weight-bold" to="/partner">¿Te interesa ser contribuidor?</b-nav-item>
+      </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
           <div v-if="username === ''">
@@ -114,10 +117,12 @@ import { logout } from "@/api/services";
 export default class NavBar extends Vue {
   isLogin = false;
   showSignIn = false;
-  showSignUp = false
+  showSignUp = false;
 
   get typeNavbar() {
-    return this.$route.path !== "/" ? true : false;
+    return this.$route.path === "/" || this.$route.path === "/partner"
+      ? false
+      : true;
   }
 
   get username() {
@@ -131,7 +136,7 @@ export default class NavBar extends Vue {
   }
 
   isRegisterSuccess(value: boolean) {
-    console.log('register', value);
+    console.log("register", value);
     this.showSignUp = value;
     this.popToast("info", "b-toaster-bottom-right");
   }
