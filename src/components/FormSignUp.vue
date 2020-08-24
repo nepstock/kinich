@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-row>
-      <b-col class="text-left p-4">
+      <b-col v-if="typeUser === 'user'" class="text-left p-4">
         <div class="border-right">
           <h5>Acceda a características exclusivas con una cuenta gratuita</h5>
           <b-nav vertical small>
@@ -27,7 +27,43 @@
       </b-col>
       <b-col class="px-4 py-4">
         <b-form class="text-left" @submit.prevent.stop="onSubmit" novalidate>
-          <h3>Registrarse</h3>
+          <h4>Registrarse <span v-if="typeUser === 'partner'">como contribuidor</span></h4>
+          <b-form-group
+            v-if="typeUser === 'partner'"
+            id="input-group-7"
+            label-size="sm"
+            label="Ingresa tu nombre completo"
+            label-for="input-2"
+          >
+            <b-form-input
+              id="input-7"
+              v-model.trim="$v.name.$model"
+              :state="$v.name.$dirty ? !$v.name.$error : 'null'"
+              type="text"
+              placeholder=""
+            ></b-form-input>
+            <b-form-invalid-feedback>
+              Ingresa una correo electronico válido
+            </b-form-invalid-feedback>
+          </b-form-group>
+          <b-form-group
+            v-if="typeUser === 'partner'"
+            id="input-group-8"
+            label-size="sm"
+            label="Elija el nombre que desea mostrar a los clientes."
+            label-for="input-2"
+          >
+            <b-form-input
+              id="input-8"
+              v-model.trim="$v.userName.$model"
+              :state="$v.userName.$dirty ? !$v.userName.$error : 'null'"
+              type="text"
+              placeholder=""
+            ></b-form-input>
+            <b-form-invalid-feedback>
+              Ingresa una correo electronico válido
+            </b-form-invalid-feedback>
+          </b-form-group>
           <b-form-group
             id="input-group-2"
             label-size="sm"
@@ -105,20 +141,28 @@ import { email, password } from "@/utils/validations";
 export default class FormSignUp extends Vue {
   email = "";
   password = "";
+  name = "";
+  userName = "";
   loading = false;
 
   @Validations()
   validations = {
+    name: { name },
+    userName: { name },
     email: { required, email },
     password: { required, password }
   };
+
+  get typeUser() {
+    return this.$route.path === "/" ? "user" : "partner";
+  }
 
   onSubmit(evt: Event) {
     evt.preventDefault();
     this.loading = true;
     this.$v.$touch();
     if (!this.$v.$invalid) {
-      API.post("/users", { email: this.email, password: this.password })
+      API.post("/users", { name: this.name, userName: this.name, email: this.email, password: this.password })
         .then(resp => {
           console.log("response", resp.data);
           const body = {

@@ -13,7 +13,7 @@
         <b-nav-form>
           <div v-if="username === ''">
             <b-button
-              variant="outline-light"
+              :variant="this.$route.path === '/partner' ? 'light' : 'outline-light'"
               size="sm"
               class="my-2 my-sm-0 mr-2"
               pill
@@ -80,7 +80,7 @@
       :hide-header="true"
       :hide-footer="true"
       :centered="true"
-      size="lg"
+      :size="this.$route.path === '/partner' ? 'md' : 'lg'"
       v-model="showSignUp"
     >
       <FormSignUp @success="isRegisterSuccess" />

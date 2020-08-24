@@ -1,7 +1,7 @@
 <template>
   <div class="px-3 py-4">
     <b-form class="text-left" @submit="onSubmit">
-      <h3>Iniciar sesión</h3>
+      <h4>Iniciar sesión <span v-if="this.$route.path === '/partner'">como contribuidor</span></h4>
       <b-form-group
         id="input-group-2"
         label-size="sm"
